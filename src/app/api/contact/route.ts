@@ -40,6 +40,6 @@ export async function POST(request: Request) {
 
   } catch (error) {
     console.error('Error processing contact form:', error);
-    return NextResponse.json({ error: 'Une erreur est survenue lors de l'envoi du message.' }, { status: 500 });
+    return NextResponse.json({ error: "Une erreur est survenue lors de l'envoi du message." }, { status: 500 });
   }
 }
