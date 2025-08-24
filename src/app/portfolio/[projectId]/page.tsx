@@ -92,3 +92,5 @@ const ProjectDetailPage = ({ params }: { params: { projectId: string } }) => {
     </>
   );
 };
+
+export default ProjectDetailPage;
