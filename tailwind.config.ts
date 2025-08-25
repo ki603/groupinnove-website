@@ -13,7 +13,7 @@ const config: Config = {
         'oxford-blue': '#012060',
         'teal-green': '#0d9d8d',
         // Add dark mode colors
-        'dark-bg': '#1a202c',
+        'dark-bg': '#1F2937',
         'dark-text': '#e2e8f0',
       },
       fontFamily: {

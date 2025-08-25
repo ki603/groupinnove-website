@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
+      <header className="sticky top-0 z-50 bg-white/75 dark:bg-dark-bg/75 backdrop-blur-sm shadow-md transition-colors duration-300">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div>
             <Link href="/" className="text-2xl font-bold font-syne text-oxford-blue dark:text-white">
@@ -28,7 +28,7 @@ const Header = () => {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map(link => (
-              <Link key={link.href} href={link.href} className="text-gray-600 dark:text-gray-300 hover:text-teal-green dark:hover:text-teal-green transition-colors">
+              <Link key={link.href} href={link.href} className="text-gray-600 dark:text-gray-300 hover:text-teal-green dark:hover:text-teal-green transition-all duration-300 hover:-translate-y-0.5">
                 {link.label}
               </Link>
             ))}
@@ -46,12 +46,12 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-40 flex flex-col items-center justify-center space-y-8">
+        <div className="md:hidden fixed inset-0 bg-white dark:bg-dark-bg z-40 flex flex-col items-center justify-center space-y-8">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-2xl font-bold text-gray-800 dark:text-gray-200 hover:text-teal-green"
+              className="text-2xl font-bold text-gray-800 dark:text-gray-200 hover:text-teal-green transition-all duration-300 hover:-translate-y-0.5"
               onClick={() => setIsMenuOpen(false)} // Close menu on link click
             >
               {link.label}

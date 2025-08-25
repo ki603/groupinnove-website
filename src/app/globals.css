@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Scrollbar Styles */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light mode track */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0d9d8d; /* teal-green for thumb */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #012060; /* oxford-blue on hover */
+}
+
+/* Dark mode scrollbar */
+html.dark ::-webkit-scrollbar-track {
+  background: #1F2937; /* dark-bg for dark mode track */
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #0d9d8d; /* teal-green for thumb in dark mode */
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #012060; /* oxford-blue on hover in dark mode */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #0d9d8d #f1f1f1; /* thumb color track color */
+}
+
+html.dark {
+  scrollbar-color: #0d9d8d #1F2937; /* thumb color track color for dark mode */
+}

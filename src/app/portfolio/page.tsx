@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import FadeIn from '@/components/FadeIn';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
   { id: 'projet-a', title: 'Identité Visuelle pour TechCorp', category: 'Identité Visuelle', image: 'https://picsum.photos/seed/a/400/300' },
@@ -29,7 +30,7 @@ const PortfolioPage = () => {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-gray-50 dark:bg-gray-800 py-16 text-center">
+      <section className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-dark-bg dark:to-[#1A2430] py-16 text-center">
         <FadeIn>
           <h1 className="text-4xl md:text-5xl font-bold font-syne text-oxford-blue dark:text-white">
             Nos Réalisations
@@ -50,7 +51,7 @@ const PortfolioPage = () => {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`font-bold py-2 px-5 rounded-full transition-colors duration-300 ${
+                  className={`font-bold py-2 px-5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                     activeCategory === category
                       ? 'bg-teal-green text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
@@ -63,29 +64,41 @@ const PortfolioPage = () => {
           </FadeIn>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <FadeIn key={project.id}>
-                <Link href={`/portfolio/${project.id}`}>
-                  <div className="group block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden h-full">
-                    <div className="relative h-60 w-full overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={400}
-                        height={300}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <AnimatePresence>
+              {filteredProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <Link href={`/portfolio/${project.id}`}>
+                    <div className="group block bg-white dark:bg-dark-bg rounded-lg shadow-md overflow-hidden h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                      <div className="relative h-60 w-full overflow-hidden">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <p className="text-sm font-work-sans text-teal-green mb-1">{project.category}</p>
+                        <h3 className="text-xl font-bold font-syne text-oxford-blue dark:text-white">{project.title}</h3>
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <p className="text-sm font-work-sans text-teal-green mb-1">{project.category}</p>
-                      <h3 className="text-xl font-bold font-syne text-oxford-blue dark:text-white">{project.title}</h3>
-                    </div>
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
     </>
