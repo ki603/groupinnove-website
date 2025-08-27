@@ -36,6 +36,34 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body className={`${syne.variable} ${workSans.variable} font-work-sans bg-white dark:bg-dark-bg`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "https://www.groupinnove.pro/#organization", // Replace with your actual domain
+                "name": "Group'innove",
+                "url": "https://www.groupinnove.pro/", // Replace with your actual domain
+                "logo": "https://www.groupinnove.pro/logo.png", // Replace with your actual logo URL
+                "sameAs": [
+                  // Add social media links here if available
+                  // "https://facebook.com/yourpage",
+                  // "https://linkedin.com/company/yourcompany"
+                ]
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://www.groupinnove.pro/#website", // Replace with your actual domain
+                "url": "https://www.groupinnove.pro/", // Replace with your actual domain
+                "name": "Group'innove",
+                "description": "Agence de conseil en Marketing et Communication.",
+                "publisher": { "@id": "https://www.groupinnove.pro/#organization" },
+                "inLanguage": "fr-FR"
+              }
+            ]
+          })
+        }} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

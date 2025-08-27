@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 
 const BackToTopButton: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {

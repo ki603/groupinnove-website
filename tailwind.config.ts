@@ -20,6 +20,9 @@ const config: Config = {
         syne: ['Syne', 'sans-serif'],
         'work-sans': ['"Work Sans"', 'sans-serif'],
       },
+      boxShadow: {
+        'neon-teal': "0 0 5px theme('colors.teal-green'), 0 0 20px theme('colors.teal-green / 50% ')",
+      },
     },
   },
   plugins: [],
